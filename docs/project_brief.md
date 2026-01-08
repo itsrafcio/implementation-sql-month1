@@ -14,5 +14,11 @@ designed to support delivery and implementation decision-making.
 ## Scope
 SQLite database + a set of analytical SQL queries focused on delivery, cost and timeline signals.
 
+## Key entities (draft, no diagram yet)
+- Customers: client accounts (company/segment/country) owning one or more implementations.
+- Projects: customer implementation engagements with dates, status, and planned budget.
+- Milestones: key delivery steps per project (planned vs actual dates, status; `NULL` `actual_date` means in progress).
+- Costs: dated project cost entries (category/amount/currency) used to track burn and overruns.
+
 ## Non-goals
 This is not a production system or a full BI solution.
