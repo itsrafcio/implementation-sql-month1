@@ -13,19 +13,19 @@ INSERT INTO customers (id, name, country, segment) VALUES
 
 INSERT INTO projects (id, customer_id, name, start_date, target_go_live_date, status, budget_amount) VALUES
 (1, 1, 'Implementation A', '2026-01-02', '2026-02-15', 'In Progress', 60000),
-(2, 1, 'Implementation B', '2026-01-06', '2026-03-01', 'Planned',     45000),
+(2, 1, 'Implementation B', '2026-01-06', '2026-03-01', 'In Progress',     45000),
 
 (3, 2, 'Implementation A', '2025-12-10', '2026-01-31', 'In Progress', 90000),
-(4, 2, 'Implementation B', '2026-01-08', '2026-03-10', 'Planned',     70000),
+(4, 2, 'Implementation B', '2026-01-08', '2026-03-10', 'In Progress',     70000),
 
 (5, 3, 'Implementation A', '2026-01-03', '2026-02-20', 'In Progress', 30000),
-(6, 3, 'Implementation B', '2026-01-12', '2026-03-05', 'Planned',     25000),
+(6, 3, 'Implementation B', '2026-01-12', '2026-03-05', 'In Progress',     25000),
 
 (7, 4, 'Implementation A', '2025-12-20', '2026-02-10', 'In Progress', 110000),
-(8, 4, 'Implementation B', '2026-01-05', '2026-03-15', 'Planned',     80000),
+(8, 4, 'Implementation B', '2026-01-05', '2026-03-15', 'In Progress',     80000),
 
 (9, 5, 'Implementation A', '2026-01-04', '2026-02-28', 'In Progress', 50000),
-(10,5, 'Implementation B', '2026-01-15', '2026-03-20', 'Planned',     40000);
+(10,5, 'Implementation B', '2026-01-15', '2026-03-20', 'In Progress',     40000);
 
 
 INSERT INTO milestones (id, project_id, type, planned_date, actual_date, status) VALUES
