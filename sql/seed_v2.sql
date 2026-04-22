@@ -27,14 +27,14 @@ INSERT INTO projects (id, customer_id, name, start_date, target_go_live_date, st
 (3,  2, 'POS Upgrade', '2025-11-25', '2026-01-20', 'Done',        90000),
 (4,  2, 'Loyalty Setup', '2026-01-06', '2026-03-10', 'In Progress', 70000),
 
-(5,  3, 'Supplier Hub', '2025-12-30', '2026-02-20', 'In Progress', 32000),
+(5,  3, 'Supplier Hub', '2025-12-30', '2026-02-20', 'In Progress', 33000),
 (6,  3, 'Reporting Setup', '2026-01-12', '2026-03-05', 'Planned',     25000),
 
 (7,  4, 'Workflow Upgrade', '2025-12-15', '2026-02-12', 'In Progress', 80000), -- over budget
 (8,  4, 'CRM Integration', '2026-01-02', '2026-03-15', 'In Progress', 70000), -- spike last 7 days
 
 (9,  5, 'Scheduling Deployment', '2025-12-28', '2026-02-28', 'Blocked',     50000),
-(10, 5, 'Asset Dashboard', '2026-01-08', '2026-03-20', 'In Progress', 40000),
+(10, 5, 'Asset Dashboard', '2026-01-08', '2026-03-20', 'In Progress', 41000),
 
 (11, 6, 'Intake Digitization', '2025-11-30', '2026-01-25', 'Done',        65000),
 (12, 6, 'Lab Integration', '2026-01-05', '2026-03-08', 'In Progress', 55000),
