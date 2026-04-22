@@ -1,6 +1,6 @@
 -- seed_v2.sql
 -- Implementation Tracker - Seed v2 (dirty dataset)
--- Reference date for "last 7 days": 2026-01-22
+-- Reference date for "last 7 days": 2026-01-21
 -- Currency: EUR everywhere
 
 PRAGMA foreign_keys = ON;
@@ -21,34 +21,34 @@ INSERT INTO customers (id, name, country, segment) VALUES
 -- Cost spike last 7 days projects (exactly 2): project_id 8, 15 (costs concentrated 2026-01-15..2026-01-21)
 
 INSERT INTO projects (id, customer_id, name, start_date, target_go_live_date, status, budget_amount) VALUES
-(1,  1, 'Implementation A', '2025-12-18', '2026-02-10', 'In Progress', 60000),
-(2,  1, 'Implementation B', '2026-01-04', '2026-03-01', 'In Progress', 45000),
+(1,  1, 'Core Rollout', '2025-12-18', '2026-02-10', 'In Progress', 60000),
+(2,  1, 'Portal Launch', '2026-01-04', '2026-03-01', 'In Progress', 45000),
 
-(3,  2, 'Implementation A', '2025-11-25', '2026-01-20', 'Done',        90000),
-(4,  2, 'Implementation B', '2026-01-06', '2026-03-10', 'In Progress', 70000),
+(3,  2, 'POS Upgrade', '2025-11-25', '2026-01-20', 'Done',        90000),
+(4,  2, 'Loyalty Setup', '2026-01-06', '2026-03-10', 'In Progress', 70000),
 
-(5,  3, 'Implementation A', '2025-12-30', '2026-02-20', 'In Progress', 32000),
-(6,  3, 'Implementation B', '2026-01-12', '2026-03-05', 'Planned',     25000),
+(5,  3, 'Supplier Hub', '2025-12-30', '2026-02-20', 'In Progress', 32000),
+(6,  3, 'Reporting Setup', '2026-01-12', '2026-03-05', 'Planned',     25000),
 
-(7,  4, 'Implementation A', '2025-12-15', '2026-02-12', 'In Progress', 80000), -- over budget
-(8,  4, 'Implementation B', '2026-01-02', '2026-03-15', 'In Progress', 70000), -- spike last 7 days
+(7,  4, 'Workflow Upgrade', '2025-12-15', '2026-02-12', 'In Progress', 80000), -- over budget
+(8,  4, 'CRM Integration', '2026-01-02', '2026-03-15', 'In Progress', 70000), -- spike last 7 days
 
-(9,  5, 'Implementation A', '2025-12-28', '2026-02-28', 'Blocked',     50000),
-(10, 5, 'Implementation B', '2026-01-08', '2026-03-20', 'In Progress', 40000),
+(9,  5, 'Scheduling Deployment', '2025-12-28', '2026-02-28', 'Blocked',     50000),
+(10, 5, 'Asset Dashboard', '2026-01-08', '2026-03-20', 'In Progress', 40000),
 
-(11, 6, 'Implementation A', '2025-11-30', '2026-01-25', 'Done',        65000),
-(12, 6, 'Implementation B', '2026-01-05', '2026-03-08', 'In Progress', 55000),
+(11, 6, 'Intake Digitization', '2025-11-30', '2026-01-25', 'Done',        65000),
+(12, 6, 'Lab Integration', '2026-01-05', '2026-03-08', 'In Progress', 55000),
 
-(13, 7, 'Implementation A', '2025-12-22', '2026-02-18', 'In Progress', 48000),
-(14, 7, 'Implementation B', '2026-01-03', '2026-03-02', 'Blocked',     45000), -- over budget
+(13, 7, 'Checkout Optimization', '2025-12-22', '2026-02-18', 'In Progress', 48000),
+(14, 7, 'Returns Automation', '2026-01-03', '2026-03-02', 'Blocked',     45000), -- over budget
 
-(15, 8, 'Implementation A', '2026-01-01', '2026-02-25', 'In Progress', 55000), -- spike last 7 days
-(16, 8, 'Implementation B', '2026-01-18', '2026-03-25', 'Planned',     38000),
+(15, 8, 'Maintenance Portal', '2026-01-01', '2026-02-25', 'In Progress', 55000), -- spike last 7 days
+(16, 8, 'Onboarding Flow', '2026-01-18', '2026-03-25', 'Planned',     38000),
 
-(17, 9, 'Implementation A', '2025-11-20', '2026-01-18', 'Done',        72000),
-(18, 9, 'Implementation B', '2025-12-26', '2026-02-22', 'In Progress', 60000),
-(19, 9, 'Implementation C', '2026-01-07', '2026-03-12', 'In Progress', 60000), -- over budget
-(20, 9, 'Implementation D', '2026-01-10', '2026-03-18', 'In Progress', 52000);
+(17, 9, 'Cost Control Rollout', '2025-11-20', '2026-01-18', 'Done',        72000),
+(18, 9, 'Site Reporting', '2025-12-26', '2026-02-22', 'In Progress', 60000),
+(19, 9, 'Vendor Portal', '2026-01-07', '2026-03-12', 'In Progress', 60000), -- over budget
+(20, 9, 'Utilization Dashboard', '2026-01-10', '2026-03-18', 'In Progress', 52000);
 
 -- 60 milestones (3 per project)
 -- Delays: at least 12 milestones have actual_date > planned_date (deliberately seeded)
@@ -279,9 +279,9 @@ INSERT INTO costs (id, project_id, cost_date, category, amount, currency) VALUES
 (90, 15, '2026-01-21', 'Vendor',   10000, 'EUR'),
 
 -- Project 16 (Planned) (budget 38000) sum=2800
-(91, 16, '2026-01-18', 'Vendor',    1200, 'EUR'),
-(92, 16, '2026-01-19', 'Internal',   700, 'EUR'),
-(93, 16, '2026-01-20', 'Support',    400, 'EUR'),
+(91, 16, '2026-01-10', 'Vendor',    1200, 'EUR'),
+(92, 16, '2026-01-11', 'Internal',   700, 'EUR'),
+(93, 16, '2026-01-22', 'Support',    400, 'EUR'),
 (94, 16, '2026-01-21', 'Infra',      300, 'EUR'),
 (95, 16, '2026-01-22', 'Travel',     200, 'EUR'),
 (96, 16, '2026-01-23', 'Internal',   0,   'EUR'),
