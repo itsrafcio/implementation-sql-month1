@@ -31,4 +31,87 @@ WHERE m.actual_date IS NOT NULL
 GROUP BY p.id, p.name, p.status
 ORDER BY worst_delay_days DESC;
 
+-- Risk queries (Day 14)
+-- Reference date: 2026-01-21
 
+-- Q3: Stuck milestones
+-- Stuck = no actual completion date and planned date already passed
+SELECT
+  m.id AS milestone_id,
+  m.project_id,
+  p.name AS project_name,
+  m.type AS milestone_type,
+  m.planned_date,
+  m.actual_date,
+  m.status AS milestone_status
+FROM milestones m
+JOIN projects p
+  ON p.id = m.project_id
+WHERE m.actual_date IS NULL
+  AND m.planned_date < '2026-01-21'
+ORDER BY
+  m.planned_date ASC,
+  m.project_id ASC;
+
+-- Q4: Budget burn per project
+-- Shows total spend vs planned budget and burn ratio
+SELECT
+  p.id AS project_id,
+  p.name AS project_name,
+  p.status AS project_status,
+  p.budget_amount,
+  COALESCE(SUM(c.amount), 0) AS total_cost,
+  ROUND(COALESCE(SUM(c.amount), 0) * 1.0 / p.budget_amount, 2) AS burn_ratio
+FROM projects p
+LEFT JOIN costs c
+  ON c.project_id = p.id
+GROUP BY
+  p.id, p.name, p.status, p.budget_amount
+ORDER BY
+  burn_ratio DESC,
+  total_cost DESC;
+
+-- Q5: Projects over budget
+-- Total costs exceed planned budget
+SELECT
+  p.id AS project_id,
+  p.name AS project_name,
+  p.status AS project_status,
+  p.budget_amount,
+  COALESCE(SUM(c.amount), 0) AS total_cost,
+  ROUND(COALESCE(SUM(c.amount), 0) - p.budget_amount, 2) AS overrun_amount
+FROM projects p
+LEFT JOIN costs c
+  ON c.project_id = p.id
+GROUP BY
+  p.id, p.name, p.status, p.budget_amount
+HAVING COALESCE(SUM(c.amount), 0) > p.budget_amount
+ORDER BY
+  overrun_amount DESC;
+
+-- Q6: Cost spike in last 7 days
+-- Reference window: 2026-01-15 to 2026-01-21
+SELECT
+  p.id AS project_id,
+  p.name AS project_name,
+  COALESCE(SUM(c.amount), 0) AS total_cost,
+  COALESCE(SUM(CASE
+      WHEN c.cost_date BETWEEN '2026-01-15' AND '2026-01-21' THEN c.amount
+      ELSE 0
+  END), 0) AS last_7_days_cost,
+  ROUND(
+    COALESCE(SUM(CASE
+      WHEN c.cost_date BETWEEN '2026-01-15' AND '2026-01-21' THEN c.amount
+      ELSE 0
+    END), 0) * 1.0 / COALESCE(SUM(c.amount), 1),
+    2
+  ) AS spike_ratio
+FROM projects p
+LEFT JOIN costs c
+  ON c.project_id = p.id
+GROUP BY
+  p.id, p.name
+HAVING spike_ratio >= 0.60
+ORDER BY
+  spike_ratio DESC,
+  last_7_days_cost DESC;
